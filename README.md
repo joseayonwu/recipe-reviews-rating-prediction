@@ -12,6 +12,7 @@ Scope includes **data cleaning**, **exploratory data analysis (EDA)**, **feature
 Python, pandas, numpy, scikit-learn, matplotlib.
 
 ## Structure (target)
+```
 recipe-reviews-rating-prediction/
 │
 ├── data/
@@ -24,6 +25,7 @@ recipe-reviews-rating-prediction/
 │ └── (charts, metrics, or saved models)
 │
 └── README.md
+```
 
 ## Notes
 - Missing values were identified and cleaned.
