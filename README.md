@@ -12,3 +12,8 @@ Scope includes **data cleaning**, **exploratory data analysis (EDA)**, **feature
 Python, pandas, numpy, scikit-learn, matplotlib.
 
 ## Structure (target)
+
+## Notes
+- Missing values were identified and cleaned.
+- Models compared Logistic Regression and Random Forest for 1–5 star prediction.
+- Class imbalance and feature importance were analyzed.
