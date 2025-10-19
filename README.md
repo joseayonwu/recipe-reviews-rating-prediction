@@ -126,7 +126,6 @@ recipe-reviews-rating-prediction/
 ├── LICENSE
 ├── README.md
 └── .gitignore
-
 ```
 
 ---
