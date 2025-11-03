@@ -121,5 +121,3 @@ This project illustrates not only the technical workflow of data analytics but a
 All results are **reproducible**, and visuals were generated programmatically using open-source libraries.
 
 ---
-
-## 8. Repository Structure
