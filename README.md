@@ -2,20 +2,20 @@
 
 ## Overview
 
-This project explores a large dataset of recipe reviews to demonstrate an end-to-end data analytics and machine learning workflow.  
-It covers data preparation, exploratory data analysis, feature engineering, model development, and evaluation, all applied to predict user ratings (1–5 stars) from both numeric and textual review data.
+This project demonstrates an **end-to-end data analytics and machine learning pipeline** applied to predict recipe review ratings (1–5 stars).  
+It covers **data preparation, ETL workflows, exploratory data analysis (EDA), feature engineering, model development, and performance evaluation**.  
 
-The analysis was developed as part of the Master of Data Analytics program at the University of Niagara Falls, Canada, and reflects the type of practical and interpretable work expected from an entry-level data analyst or co-op student.
+Developed as part of the *Master of Data Analytics* program at the **University of Niagara Falls, Canada**, this project showcases the ability to transform raw data into actionable business insights and interpretable machine learning outcomes.
 
 ---
 
-## 1. Project Objectives
+## 1. Objectives
 
-- Understand how engagement metrics and review text relate to user satisfaction.  
-- Prepare a high-quality, clean dataset suitable for predictive modeling.  
-- Build and compare baseline and advanced models for rating prediction.  
-- Explore class imbalance handling and discuss business implications.  
-- Present results through interpretable visualizations and metrics.
+- Analyze how engagement metrics and review text relate to user satisfaction.  
+- Clean and structure data for reproducible machine learning pipelines.  
+- Build, tune, and evaluate **Logistic Regression** and **Random Forest** models.  
+- Address **class imbalance** and assess real-world implications.  
+- Communicate findings using interpretable **visuals and metrics (Accuracy, Precision, Recall, F1-Score, ROC-AUC)**.  
 
 ---
 
@@ -23,129 +23,103 @@ The analysis was developed as part of the Master of Data Analytics program at th
 
 | Stage | Description | Outcome |
 |--------|-------------|----------|
-| **Data Cleaning** | Managed missing values, removed duplicates, normalized categorical variables. | Final dataset: 18,180 rows × 20 columns. |
-| **Exploratory Data Analysis (EDA)** | Visualized distributions, correlations, and relationships with the target variable. | Identified skewed features and class imbalance (76% of 5-star reviews). |
-| **Feature Engineering** | Created log-transformed and text-based features; encoded categorical variables. | Generated a balanced, interpretable feature set. |
-| **Modeling** | Built Logistic Regression and Random Forest models with and without balancing. | Random Forest achieved 0.76 accuracy; balancing improved recall. |
-| **Evaluation** | Compared metrics and confusion matrices; analyzed ROC performance. | AUC ≈ 0.67 for detecting 5-star reviews vs others. |
+| **ETL & Data Cleaning** | Handled missing values, duplicates, and inconsistent categories. | Final dataset: 18,180 rows × 20 columns. |
+| **Exploratory Data Analysis (EDA)** | Explored distributions, correlations, and class imbalance (76% 5-star reviews). | Identified key skewed variables. |
+| **Feature Engineering** | Log-transformed numerical data, encoded categorical variables, added text-based metrics. | Created balanced, interpretable features. |
+| **Modeling** | Trained Logistic Regression and Random Forest models, both with and without SMOTE balancing. | Best model: Random Forest, Accuracy = 0.76. |
+| **Evaluation** | Compared performance metrics and confusion matrices; analyzed ROC curves. | Balanced models improved minority-class recall. |
 
 ---
 
-## 3. Key Visualizations
+## 3. Visual Highlights
 
-### Exploratory Data Analysis
-| Numeric Distributions | Correlations | Categories vs Ratings |
-|------------------------|--------------|------------------------|
-| ![Numeric Distributions](outputs/numeric_distributions.png) | ![Correlation Heatmap](outputs/correlation_heatmap.png) | ![Categorical vs Stars](outputs/categorical_vs_stars_countplots.png) |
-
-### Feature Engineering
-| Word Count Distribution | Log Transformation | Feature Importance |
-|--------------------------|--------------------|--------------------|
-| ![Word Count](outputs/word_count_distribution.png) | ![Log Transformation](outputs/likes_score_log_transformation.png) | ![Feature Importance](outputs/feature_importance.png) |
-
-### Model Evaluation
-| Logistic Regression | Random Forest | Random Forest (Tuned) |
-|---------------------|---------------|------------------------|
-| ![Logistic Regression](outputs/confusion_matrix_logistic_regression.png) | ![Random Forest](outputs/confusion_matrix_random_forest.png) | ![Random Forest Tuned](outputs/confusion_matrix_random_forest_tuned.png) |
-
-### Advanced Evaluation
-| Balanced Models | ROC Curve (5 Stars vs Rest) |
-|-----------------|------------------------------|
-| ![Confusion Matrices Balanced](outputs/confusion_matrices_balanced.png) | ![ROC Curve](outputs/roc_curve_random_forest_5stars.png) |
+| EDA: Correlations | Feature Engineering | Model Evaluation |
+|--------------------|----------------------|------------------|
+| ![Heatmap](outputs/correlation_heatmap.png) | ![Feature Importance](outputs/feature_importance.png) | ![ROC Curve](outputs/roc_curve_random_forest_5stars.png) |
 
 ---
 
 ## 4. Technical Summary
 
-**Languages and Tools**  
-Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn, Imbalanced-learn, Jupyter Notebook, Visual Studio Code.
+**Languages & Tools**  
+Python • Pandas • NumPy • Matplotlib • Seaborn • Scikit-learn • Imbalanced-learn • Jupyter Notebook • VS Code  
 
-**Techniques Used**  
-Data profiling, feature scaling, log transformation, one-hot encoding, model evaluation metrics, SMOTE oversampling, and ROC analysis.
+**Techniques**  
+ETL / Data Cleaning • EDA • Feature Engineering • Model Evaluation • Class Imbalance Handling (SMOTE) • ROC Analysis • Model Tuning  
 
 **Performance Summary**
 
 | Model | Accuracy | Macro F1 | Notes |
 |--------|-----------|-----------|-------|
-| Logistic Regression | 0.32 | Low | Interpretable but weak under class imbalance. |
-| Random Forest | 0.76 | Moderate | Strong non-linear performance but biased toward majority class. |
-| Random Forest + SMOTE | 0.67 | Balanced | Improved recall for minority classes. |
-| Tuned Random Forest | 0.759 | Stable | Consistent results after pruning redundancy. |
+| Logistic Regression | 0.32 | 0.22 | Limited under imbalance but interpretable. |
+| Random Forest | 0.76 | 0.64 | Strong baseline; slight bias toward majority. |
+| Random Forest + SMOTE | 0.67 | 0.71 | Improved recall and balance. |
+| Tuned Random Forest | 0.759 | 0.68 | Stable, reliable classification. |
 
 ---
 
-## 5. Main Insights
+## 5. Insights
 
-- The dataset exhibits **severe class imbalance** with a dominance of 5-star reviews.  
-- Numeric features such as `likes_score` and `dislike_index` show strong right skew; log transformations improve stability.  
-- **Engagement-related variables** (likes, dislikes, ranking) have the highest predictive power.  
-- Models without balancing tend to overfit to the majority class.  
-- Balanced models provide more useful insights for real-world applications where detecting negative feedback matters most.
+- The dataset is **highly imbalanced**, with 5-star reviews dominating.  
+- **Engagement features** (likes, dislikes, ranking) are the most predictive.  
+- **Log transformations** stabilized skewed features.  
+- **Balanced models** provided better decision value for identifying negative feedback.  
+- Business applications include early detection of quality issues and customer dissatisfaction.
 
 ---
 
-## 6. Business Interpretation
+## 6. Business Impact
 
-From a product or service management perspective:
-
-- The high share of 5-star ratings suggests strong user satisfaction but reduces visibility of weak points.  
-- **Minority (low-rating) reviews** are critical for early identification of quality or experience issues.  
-- Predictive models can support customer experience teams by flagging potentially negative feedback automatically.  
-- Even if accuracy decreases slightly, a balanced model offers better decision value for operations and reputation management.
+From a business and operations standpoint:  
+- Models can help **customer experience teams** automatically detect potentially negative reviews.  
+- Balanced evaluation prioritizes **decision usefulness** over raw accuracy.  
+- Insights can guide **marketing and product improvement** strategies.  
 
 ---
 
 ## 7. Next Steps
 
-- Integrate Natural Language Processing (TF-IDF or embeddings) to extract sentiment and tone from text reviews.  
-- Test gradient boosting algorithms (XGBoost, LightGBM) for finer class separation.  
-- Simplify prediction goal to a binary task: Positive (4–5) vs Negative (0–3) ratings.  
-- Collect more low-rating examples to improve minority learning.  
-- Automate retraining pipeline and deploy lightweight model through an interactive dashboard.
+- Integrate **NLP techniques (TF-IDF, embeddings)** for sentiment extraction.  
+- Test **XGBoost / LightGBM** for higher precision and explainability.  
+- Convert to **binary classification (positive vs negative reviews)** for deployment.  
+- Automate model retraining and visualization pipeline in **Power BI or Streamlit**.  
 
 ---
 
 ## 8. Repository Structure
+
 ```
 recipe-reviews-rating-prediction/
 │
-├── data/
-│ └── recipe_reviews.csv
-│
-├── notebook/
-│ └── recipe_reviews_analysis_light_github.ipynb
-│
-├── outputs/
-│ ├── categorical_distributions.png
-│ ├── correlation_heatmap.png
-│ ├── feature_importance.png
-│ ├── confusion_matrix_random_forest.png
-│ ├── roc_curve_random_forest_5stars.png
-│ └── (other visualizations)
-│
+├── data/ # Raw dataset
+├── notebook/ # Jupyter notebooks
+├── outputs/ # Visualizations and evaluation plots
 ├── LICENSE
-├── README.md
-└── .gitignore
+└── README.md
 ```
-
 ---
 
 ## 9. Author
 
 **José Antonio Ayón Wu**  
 Master of Data Analytics — University of Niagara Falls, Canada  
-Location: Ontario  
-Email: joseayonwu@gmail.com  
-GitHub: [joseayonwu](https://github.com/joseayonwu)
+📍 Ontario, Canada  
+📧 [joseayonwu@gmail.com](mailto:joseayonwu@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/joseayonwu) | [GitHub](https://github.com/joseayonwu)
 
 ---
 
-## 10. Notes for Reviewers and Employers
+## 10. Keywords
 
-This repository is designed to reflect the analytical rigor, documentation style, and technical communication expected in Canadian data analyst co-op positions.  
-It prioritizes reproducibility, clarity, and business interpretation over automated visuals or template aesthetics.
-
-All visualizations were generated programmatically; no outputs were manually edited.  
-The notebook version published here is a lightweight “clean” version without warnings or large prints to ensure smooth rendering on GitHub.
+`ETL` · `EDA` · `Feature Engineering` · `Random Forest` · `Model Evaluation` · `Accuracy` · `Precision` · `Recall` · `F1 Score` · `Class Imbalance` · `SMOTE` · `Data Cleaning` · `Machine Learning` · `Python`
 
 ---
+
+## 11. Notes for Reviewers and Employers
+
+This project illustrates not only the technical workflow of data analytics but also **the interpretive thinking and communication skills** expected in Canadian data analyst roles.  
+All results are **reproducible**, and visuals were generated programmatically using open-source libraries.
+
+---
+
+## 8. Repository Structure
